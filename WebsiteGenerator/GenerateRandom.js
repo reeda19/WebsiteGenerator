@@ -1,5 +1,6 @@
 ﻿
-function buttonClick() {
+
+function buttonClick(count) {
     
     var test = "This is a test";
     var site = CreateURL();
@@ -7,14 +8,14 @@ function buttonClick() {
             [".com", ".net", ".gov", ".org", ".cn", ".uk", ".info", ".nl", ".EU",
                     ".RU", ".DE"];
     site = "https://www." + site + suffix[generateRandomNumber(0, 10)];
-    document.getElementById("p1").innerHTML = site;
         check = checkURL(site, function (check) {
             if (check) {
                 window.location.replace(site);
             }
             else {
-                document.getElementById("p1").innerHTML = site + " bad URL";
-                buttonClick();
+                count++;
+                document.getElementById("p1").innerHTML = "checking " + count + " websites\ncurrently checking "+site;
+                buttonClick(count);
             }
         }
         );
